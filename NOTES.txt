@@ -1,0 +1,17 @@
+NOTES:
+
+1. https://exoplanetarchive.ipac.caltech.edu/index.html nasa datasets for exoplanets
+2. https://exoplanetarchive.ipac.caltech.edu/docs/API_PS_columns.html definition for the query api
+3. interesting plot insolation flux v orbitial period negatively related because short period means closer to star means more solar energy
+
+
+
+WHAT DO I WANT TO DO
+
+1. color composite of stars/planets/galaxies
+2. plot in 3d space of all exoplanet systems
+3. spike ball where each line goes to an exoplanet and the color matches the star color. 80s style graphics if possible
+4. color spectrum applied to various features then plotted into quilt ordered by a different feature
+5. train model to predict trends based on one feature for others (this could be just regression models probs)
+6. spectra data from planet atmospheres -> convert to colors and plot
+7. types of visuals: spike-ball, 3d compressed space, rectangle quilt, melting plot of colors, ripples away from our system
