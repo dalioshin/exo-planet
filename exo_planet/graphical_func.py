@@ -14,12 +14,13 @@ def plot_example():
 
 def plot_data_contor(dataframe: pd.DataFrame):
     '''
-    plot contor from data frame
+    plot contour from data frame
     '''
 
     # TODO: remove hardcode, allow for selction of features as params
     fig = go.Figure(data =
         go.Contour(
-            z = dataframe[["pl_rade", "pl_eqt"]]
+            z = dataframe[["pl_rade", "pl_eqt"]],
+            connectgaps=True
         ))
     fig.show()
