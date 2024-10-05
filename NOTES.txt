@@ -3,6 +3,7 @@ NOTES:
 1. https://exoplanetarchive.ipac.caltech.edu/index.html nasa datasets for exoplanets
 2. https://exoplanetarchive.ipac.caltech.edu/docs/API_PS_columns.html definition for the query api
 3. interesting plot insolation flux v orbitial period negatively related because short period means closer to star means more solar energy
+4. https://exoplanetarchive.ipac.caltech.edu/cgi-bin/atmospheres/nph-firefly?atmospheres directly imaged planet atmosphere spectra
 
 
 
@@ -13,5 +14,17 @@ WHAT DO I WANT TO DO
 3. spike ball where each line goes to an exoplanet and the color matches the star color. 80s style graphics if possible
 4. color spectrum applied to various features then plotted into quilt ordered by a different feature
 5. train model to predict trends based on one feature for others (this could be just regression models probs)
+	is there bias because of our current detection techniques?
 6. spectra data from planet atmospheres -> convert to colors and plot
 7. types of visuals: spike-ball, 3d compressed space, rectangle quilt, melting plot of colors, ripples away from our system
+8. normalize 3 values to 255 scale, compose colors using that
+9. host site that polls the datasets and updates live
+
+METHODS
+1. processing language
+2. 
+12.10 x 19.10
+
+13.01 x 14.10
+
+
