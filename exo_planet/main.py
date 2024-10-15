@@ -9,9 +9,21 @@ def main():
 
     df = load_from_csv(sys.argv[1])
     print(df.columns)
-    plot_data_contor(df.sample(frac=0.01))
+    
+    # plot contor of the sample
+    # plot_data_contor(df.sample(frac=0.01))
 
-    # df.plot.scatter(x="pl_rade", y="pl_eqt")
+    df_location_only = df[["ra", "dec", "sy_dist"]]
+    df_loc_scaled = df_location_only.copy()
+    df_loc_scaled["sy_dist"] = df_loc_scaled["sy_dist"] / df_loc_scaled["sy_dist"].max()
+    
+    print(df_location_only["sy_dist"].max())
+    print(df_loc_scaled["sy_dist"].max())
+
+    df_loc_scaled.to_csv('scaled_data.csv', index=False)
+
+# def normalize_distance(raw_dist, scale):
+
 
 
 
