@@ -25,6 +25,24 @@ METHODS
 2. transform the RA, declination, and distance into coordinates then plot
 	rotate Y, rotate Z, translate distance in X
 	can change the color each dot while plotting
+
+POSTING PLAN
+1. TikTok
+	a. make a new account
+	b. film footage from the mac monitor
+	c. post several different angles and songs
+	d. self holding any full size artwork
+
+2. Instagram
+	a. make a new account - link to TikTok
+	b. reels of the same tiktoks
+	c. still images of any still renders I create
+
+3. LinkedIn
+	a. Link to both accounts
+	b. create paragraph about the process and journey and purpose
+
+
 	
 12.10 x 19.10
 
