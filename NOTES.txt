@@ -11,6 +11,12 @@ WHAT DO I WANT TO DO
 
 1. color composite of stars/planets/galaxies
 2. plot in 3d space of all exoplanet systems
+	create frame around space
+	title card?
+	pre plotted camera path through the universe
+	think tempest
+	arrows or lines linking
+	pulsing connections
 3. spike ball where each line goes to an exoplanet and the color matches the star color. 80s style graphics if possible
 4. color spectrum applied to various features then plotted into quilt ordered by a different feature
 5. train model to predict trends based on one feature for others (this could be just regression models probs)
