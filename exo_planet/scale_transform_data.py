@@ -10,7 +10,7 @@ def scale_dist(df) -> pd.DataFrame:
 def convert_to_cart(df) -> pd.DataFrame:
     df["x"] = df["sy_dist"] * np.sin(df["dec"]) * np.cos(df["ra"])
     df["y"]  = df["sy_dist"] * np.sin(df["dec"]) * np.sin(df["ra"])
-    df["z"]  = df["sy_dist"] * np.sin(df["dec"])
+    df["z"]  = df["sy_dist"] * np.cos(df["dec"])
     return df
 
 
@@ -19,7 +19,7 @@ def main():
         print("provide a filename")
         sys.exit(1)
 
-    df = load_from_csv(sys.argv[1])    
+    df = load_from_csv(sys.argv[1])
 
     # pull spec columns from df and scale distance
     df_location_only = df[["ra", "dec", "sy_dist", "pl_rade"]]
