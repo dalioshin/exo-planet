@@ -48,6 +48,19 @@ POSTING PLAN
 	a. Link to both accounts
 	b. create paragraph about the process and journey and purpose
 
+BLENDER HOW TO 
+- make background black
+	right side world -> background change rgb to black
+- make things glow
+	add material -> emission -> view in rendered mode
+- camera to view
+	click open hidden tab right under options to the left of the properties pane
+	view -> camera to view 
+- apply materials
+	ctrl L -> link material
+	bpy.ops.object.select_all(action='SELECT') 
+	bpy.ops.object.make_links_data(type='MATERIAL')
+	sets active obj material to all selected
 
 	
 12.10 x 19.10
