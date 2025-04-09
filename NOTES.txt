@@ -62,6 +62,17 @@ BLENDER HOW TO
 	bpy.ops.object.make_links_data(type='MATERIAL')
 	sets active obj material to all selected
 
+POETRY
+scoop install pipx
+pipx ensurepaths
+pipx install poetry
+
+poetry update --lock
+poetry install
+poetry env activate
+
+poetry add <package>
+
 	
 12.10 x 19.10
 

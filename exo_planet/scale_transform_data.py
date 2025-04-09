@@ -4,7 +4,7 @@ import pandas as pd
 from data_func import load_from_csv
 
 def scale_dist(df) -> pd.DataFrame:
-    df["sy_dist"] = df["sy_dist"] / df["sy_dist"].max() * 100
+    df["sy_dist"] = df["sy_dist"] / df["sy_dist"].max() * 100000
     return df
 
 def convert_to_cart(df) -> pd.DataFrame:
