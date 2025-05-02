@@ -1,0 +1,44 @@
+import bpy
+import csv
+
+
+csv_file_hardcode = "../2025_ouput.csv"
+
+# assume data cleaning done before blender script
+def draw_sphere_from_data(path):
+    with open(path, 'r') as file:
+        reader = csv.reader(file)
+        next(reader)
+        
+        for i, row in enumerate(reader):
+            st_rad, st_temp, x, y, z = map(float, row[4:])
+            bpy.ops.mesh.primitive_ico_sphere_add(subdivisions=2, radius=st_rad, calc_uvs=False, enter_editmode=False, align='WORLD', location=(x, y, z), scale=(1, 1, 1))
+#            bpy.ops.mesh.primitive_uv_sphere_add(segments=9, ring_count=9, 
+#                    radius=5, enter_editmode=False, align='WORLD', location=(x, y, z))
+            bpy.ops.object.modifier_add(type='WIREFRAME')
+            bpy.context.object.modifiers["Wireframe"].thickness = st_rad * 0.01
+            if i > 100:
+                break
+
+def add_glow_material():
+    # create material
+    mat = bpy.data.materials.new(name="Material")
+    mat.use_nodes = True
+    
+    # define tree - script connects lines similar to GUI
+    tree = mat.node_tree
+    nodes = tree.nodes
+    emit = nodes.new("ShaderNodeEmission")
+    emit.inputs['Color'].default_value = (0.835078, 1, 0.000327989, 1)
+    emit.inputs['Strength'].default_value = 5.0
+    tree.links.new(nodes['Material Output'].inputs['Surface'], nodes['Emission'].outputs['Emission'])
+    
+    # apply material to active object then link all objects with same material
+    bpy.context.active_object.data.materials.append(mat)
+    bpy.ops.object.select_all(action='SELECT') 
+    bpy.ops.object.make_links_data(type='MATERIAL')
+
+
+if __name__ == "__main__":        
+    draw_sphere_from_data(csv_file_hardcode)
+    add_glow_material()

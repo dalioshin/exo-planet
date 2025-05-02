@@ -7,7 +7,7 @@ Dependencies:
 blender
 
 Run the data manipulation
-poetry run py exo_planet/scale_transform_data.py PSCompPars_2024.04.08_23.19.41.csv
+poetry run py exo_planet/scale_transform_data.py PSCompPars_2024.04.08_23.19.41.csv ouput
 
 Run a processig sketch example
 processing-java --sketch=pointfield --run
