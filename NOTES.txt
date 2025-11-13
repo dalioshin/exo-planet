@@ -6,7 +6,6 @@ NOTES:
 4. https://exoplanetarchive.ipac.caltech.edu/cgi-bin/atmospheres/nph-firefly?atmospheres directly imaged planet atmosphere spectra
 
 
-
 WHAT DO I WANT TO DO
 
 1. color composite of stars/planets/galaxies
@@ -56,6 +55,9 @@ BLENDER HOW TO
 - camera to view
 	click open hidden tab right under options to the left of the properties pane
 	view -> camera to view 
+- track camera on path
+	constraints -> follow path target=curve, animate path
+	track to -> select object or objects the camera should track
 - apply materials
 	ctrl L -> link material
 	bpy.ops.object.select_all(action='SELECT') 
@@ -63,7 +65,7 @@ BLENDER HOW TO
 	sets active obj material to all selected
 
 POETRY
-scoop install pipx
+brew install pipx
 pipx ensurepaths
 pipx install poetry
 
@@ -73,10 +75,6 @@ poetry env activate
 
 poetry add <package>
 
-	
-12.10 x 19.10
-
-13.01 x 14.10
 
 
 
