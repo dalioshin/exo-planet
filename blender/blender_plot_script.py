@@ -2,7 +2,7 @@ import bpy
 import csv
 
 
-csv_file_hardcode = "../2025_ouput.csv"
+CSV_FILE_HARDCODE = "../2025_ouput.csv"
 
 # assume data cleaning done before blender script
 def draw_sphere_from_data(path):
@@ -10,6 +10,7 @@ def draw_sphere_from_data(path):
         reader = csv.reader(file)
         next(reader)
         
+        # plot ico spheres at each x,y,z with radius st_rad
         for i, row in enumerate(reader):
             st_rad, st_temp, x, y, z = map(float, row[4:])
             bpy.ops.mesh.primitive_ico_sphere_add(subdivisions=2, radius=st_rad, calc_uvs=False, enter_editmode=False, align='WORLD', location=(x, y, z), scale=(1, 1, 1))
@@ -17,8 +18,10 @@ def draw_sphere_from_data(path):
 #                    radius=5, enter_editmode=False, align='WORLD', location=(x, y, z))
             bpy.ops.object.modifier_add(type='WIREFRAME')
             bpy.context.object.modifiers["Wireframe"].thickness = st_rad * 0.01
-            if i > 100:
-                break
+            
+            # limit number of spheres for testing if needed
+            # if i > 100:
+            #     break
 
 def add_glow_material():
     # create material
@@ -40,5 +43,5 @@ def add_glow_material():
 
 
 if __name__ == "__main__":        
-    draw_sphere_from_data(csv_file_hardcode)
+    draw_sphere_from_data(CSV_FILE_HARDCODE)
     add_glow_material()

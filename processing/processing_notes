@@ -1,6 +1,7 @@
 Processing Notes
 
+
 1. pushMatrix/ popMatrix
 takes the current coordinate system (where origin is) and places on the stack. Pop returns this this from the stack and makes current.
-2. rotation
 
+### NOTE: moved away from processing early on, most stuff in here is early experiments

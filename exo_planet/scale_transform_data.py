@@ -4,6 +4,8 @@ import pandas as pd
 from data_func import load_from_csv
 import matplotlib.pyplot as plt
 
+SCALE_FACTOR_MAGIC = 100000
+
 def linear_scale(df, col, scaler=1) -> pd.DataFrame:
     df[col] = (df[col] - df[col].min()) / (df[col].max() - df[col].min()) * scaler
     return df
@@ -24,7 +26,7 @@ def main():
 
     # pull spec columns from df and scale distance
     df_location_only = df[["ra", "dec", "sy_dist", "pl_rade", "st_rad", "st_teff"]]
-    df_loc_scaled = linear_scale(df_location_only, "sy_dist", 100000)
+    df_loc_scaled = linear_scale(df_location_only, "sy_dist", SCALE_FACTOR_MAGIC)
     
     # convert polar to cartesian coords
     df_scaled_cart = convert_to_cart(df_loc_scaled)
@@ -36,13 +38,15 @@ def main():
     print(df_scaled_cart.median())
 
 
-    # scale greater than 10 radius by log
+    # scale greater than 10 radius by log (some stars are so massive, taking artistic liberty for visualization)
     df_scaled_cart["st_rad"] = np.log(df_scaled_cart["st_rad"])
-    df_scaled_cart["st_rad"].hist()
-    plt.show()
+    # df_scaled_cart["st_rad"].hist()
+    # plt.show()
+
+    # after normalizing radius, rescale to look good in scene
     df_scaled_cart = linear_scale(df_scaled_cart, "st_rad", 3)
-    df_scaled_cart["st_rad"].hist()
-    plt.show()
+    # df_scaled_cart["st_rad"].hist()
+    # plt.show()
 
     # output new csv for blender consumption
     df_scaled_cart.to_csv(sys.argv[2] + ".csv", index=False)
