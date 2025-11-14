@@ -1,7 +1,7 @@
 import bpy
 import csv
 
-csv_file_hardcode = "/Users/dalioshin/projects/exo-planet/new_math.csv"
+csv_file_hardcode = "/Users/dalioshin/projects/exo-planet/data/corrected_output_2025-11-13.csv"
 
 # assume data cleaning done before blender script
 def draw_sphere_from_data(path):
