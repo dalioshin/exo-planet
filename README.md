@@ -3,7 +3,9 @@
 ## Finished product
 Youtube link: https://youtu.be/NlyqaMEvBfw
 
-Example still frame: ![still frame](/blender/still-frame.png)
+Example still frame: 
+![x_view](/blender/screenshot_xview.png)
+![still frame](/blender/still-frame.png)
 
 
 ## What is this project for?
