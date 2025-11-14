@@ -1,9 +1,10 @@
 # Exoplanet Star Map
 
 ## Finished product
-<iframe width="560" height="315" src="https://www.youtube.com/embed/TTXV3mgL7a4?si=SE7eVYKafCc9R9ot" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+Youtube link: https://youtu.be/NlyqaMEvBfw
 
- Youtube link: https://youtu.be/TTXV3mgL7a4
+Example still frame: ![still frame](/blender/still-frame.png)
+
 
 ## What is this project for?
 The main purpose is to capture and visualize how teeming with exoplanets our universe really is. To capture the wonder I first experienced looking at this data in a way that captures the imagination of a broader group of people than data alone can. When I first started becoming interested in studying exoplanets they were thought to be rare, but recently with improvements in sensing technologies we have discovered thousands. It is now estimated that more stars have exoplanets than not, which is truly incredible.
