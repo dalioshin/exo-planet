@@ -1,7 +1,11 @@
 import argparse
 import numpy as np
 import pandas as pd
-from data_func import load_from_csv, save_to_csv, pull_from_astro_api
+try:
+    from .data_func import load_from_csv, save_to_csv, pull_from_astro_api
+except ImportError:
+    # For script execution
+    from data_func import load_from_csv, save_to_csv, pull_from_astro_api
 
 SCALE_FACTOR_CONST = 70000
 
