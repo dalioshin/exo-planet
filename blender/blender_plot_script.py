@@ -2,7 +2,7 @@ import bpy
 import csv
 
 
-CSV_FILE_HARDCODE = "../2025_ouput.csv"
+CSV_FILE_HARDCODE = "../data/2025.05.01_ouput.csv"
 
 # assume data cleaning done before blender script
 def draw_sphere_from_data(path):

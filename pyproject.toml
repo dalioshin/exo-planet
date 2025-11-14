@@ -11,6 +11,8 @@ pandas = "^2.2.2"
 matplotlib = "^3.8.4"
 plotly = "^5.20.0"
 numpy = "^2.2.4"
+astroquery = "^0.4.11"
+pytest = "^9.0.1"
 
 
 [build-system]
