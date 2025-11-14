@@ -33,7 +33,8 @@ Assumption = macOS
 | --- | --- |
 | brew install jpeg zlib libtiff | (First time setup only) Install native image libraries required for rendering (macOS) |
 | poetry install | Install Python dependencies defined in pyproject.toml using Poetry |
-| poetry run python3 exo_planet/scale_transform_data.py [input csv] [ouput csv] | Run the data transformation script to convert RA/Dec/distance into scaled x,y,z coordinates |
+| poetry run python3 exo_planet/scale_transform_data.py local [input csv] [ouput csv] | Take a local csv of downloaded data from pscompars table and clean, convert, and scale to prepare for Blender plotting |
+| poetry run python3 exo_planet/scale_transform_data.py api [ouput csv] | Pull data directly from NASA archive API and then clean, convert, and scale to prepare for Blender plotting |
 | processing-java --sketch=pointfield --run | Run the Processing sketch |
 
 ### Within Blender

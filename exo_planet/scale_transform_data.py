@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 from data_func import load_from_csv, save_to_csv, pull_from_astro_api
 
-SCALE_FACTOR_CONST = 100000
+SCALE_FACTOR_CONST = 1000000
 
 def linear_scale(df, col, scaler=1) -> pd.DataFrame:
     df = df.copy()
@@ -12,23 +12,14 @@ def linear_scale(df, col, scaler=1) -> pd.DataFrame:
 
 def convert_to_cart(df) -> pd.DataFrame:
     df = df.copy()
-    # df["x"] = df["sy_dist"] * np.sin(np.deg2rad(df["dec"])) * np.cos(np.deg2rad(df["ra"]))
-    # df["y"] = df["sy_dist"] * np.sin(np.deg2rad(df["dec"])) * np.sin(np.deg2rad(df["ra"]))
-    # df["z"] = df["sy_dist"] * np.cos(np.deg2rad(90 - df["dec"]))
     df["x"] = df["sy_dist"] * np.cos(np.deg2rad(df["dec"])) * np.cos(np.deg2rad(df["ra"]))
     df["y"] = df["sy_dist"] * np.cos(np.deg2rad(df["dec"])) * np.sin(np.deg2rad(df["ra"]))
     df["z"] = df["sy_dist"] * np.sin(np.deg2rad(df["dec"]))
     return df
 
 def convert_scale_clean_df(input_df: pd.DataFrame) -> pd.DataFrame:
-    # input_df = input_df.dropna()
-
-    # pull spec columns from df
-    print("~~~~~~~~11111~~~~~~~~~")
-    print(input_df[["ra", "dec", "sy_dist", "pl_rade", "st_rad", "st_teff"]].sort_values(by="ra").head(10))
+    # ensure working with only required columns from df
     df_filtered = input_df[["ra", "dec", "sy_dist", "pl_rade", "st_rad", "st_teff"]].copy()
-    print("~~~~~~~~22222~~~~~~~~~")
-    print(df_filtered[["ra", "dec", "sy_dist", "pl_rade", "st_rad", "st_teff"]].sort_values(by="ra").head(10))
 
     # convert polar to cartesian coords
     df_cartesian = convert_to_cart(df_filtered)
@@ -36,10 +27,7 @@ def convert_scale_clean_df(input_df: pd.DataFrame) -> pd.DataFrame:
 
     # delete dup planets around same star
     df_scaled_cart.dropna(inplace=True)
-    # df_scaled_cart.drop_duplicates(subset=["sy_dist"], inplace=True)
-    print("~~~~~~~~3333~~~~~~~~~")
-    print(df_scaled_cart[["ra", "dec", "sy_dist", "pl_rade", "st_rad", "st_teff", "x", "y", "z"]].sort_values(by="ra").head(10))
-    print(df_scaled_cart["z"].min())
+    df_scaled_cart.drop_duplicates(subset=["sy_dist"], inplace=True)
 
     # scale greater than 10 radius by log (some stars are so massive, taking artistic liberty for visualization)
     df_scaled_cart["st_rad"] = np.log(df_scaled_cart["st_rad"])
