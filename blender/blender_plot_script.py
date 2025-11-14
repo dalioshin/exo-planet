@@ -35,6 +35,7 @@ def draw_sphere_from_data(path):
         new_sphere.location = (x, y, z)
         new_sphere.scale = (st_rad, st_rad, st_rad)
         new_sphere.hide_set(False)
+        new_sphere.hide_render = False
         new_sphere.modifiers["Wireframe"].thickness = st_rad * 0.01
         
         bpy.context.collection.objects.link(new_sphere)

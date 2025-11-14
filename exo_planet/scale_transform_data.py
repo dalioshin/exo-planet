@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 from data_func import load_from_csv, save_to_csv, pull_from_astro_api
 
-SCALE_FACTOR_CONST = 1000000
+SCALE_FACTOR_CONST = 70000
 
 def linear_scale(df, col, scaler=1) -> pd.DataFrame:
     df = df.copy()
@@ -21,13 +21,13 @@ def convert_scale_clean_df(input_df: pd.DataFrame) -> pd.DataFrame:
     # ensure working with only required columns from df
     df_filtered = input_df[["ra", "dec", "sy_dist", "pl_rade", "st_rad", "st_teff"]].copy()
 
-    # convert polar to cartesian coords
-    df_cartesian = convert_to_cart(df_filtered)
-    df_scaled_cart = linear_scale(df_cartesian, "sy_dist", SCALE_FACTOR_CONST)
-
     # delete dup planets around same star
-    df_scaled_cart.dropna(inplace=True)
-    df_scaled_cart.drop_duplicates(subset=["sy_dist"], inplace=True)
+    df_filtered.dropna(inplace=True)
+    df_filtered.drop_duplicates(subset=["sy_dist"], inplace=True)
+
+    # convert polar to cartesian coords
+    df_scaled = linear_scale(df_filtered, "sy_dist", SCALE_FACTOR_CONST)
+    df_scaled_cart = convert_to_cart(df_scaled)
 
     # scale greater than 10 radius by log (some stars are so massive, taking artistic liberty for visualization)
     df_scaled_cart["st_rad"] = np.log(df_scaled_cart["st_rad"])
