@@ -1,7 +1,7 @@
 import pytest
 import numpy as np
 import pandas as pd
-from unittest.mock import patch, MagicMock, call
+from unittest.mock import patch
 
 # Import the module to test
 from exo_planet.scale_transform_data import (

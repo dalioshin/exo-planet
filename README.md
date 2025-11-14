@@ -36,6 +36,7 @@ Assumption = macOS
 | poetry install | Install Python dependencies defined in pyproject.toml using Poetry |
 | poetry run python3 exo_planet/scale_transform_data.py local [input csv] [ouput csv] | Take a local csv of downloaded data from pscompars table and clean, convert, and scale to prepare for Blender plotting |
 | poetry run python3 exo_planet/scale_transform_data.py api [ouput csv] | Pull data directly from NASA archive API and then clean, convert, and scale to prepare for Blender plotting |
+| poetry run pytest tests/test_scale_transform_data.py | Run tests for the main functionality |
 | processing-java --sketch=pointfield --run | Run the Processing sketch |
 
 ### Within Blender
