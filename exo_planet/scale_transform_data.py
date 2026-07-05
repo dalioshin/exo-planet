@@ -7,7 +7,9 @@ except ImportError:
     # For script execution
     from data_func import load_from_csv, save_to_csv, pull_from_astro_api
 
-SCALE_FACTOR_CONST = 70000
+SCALE_FACTOR_CONST = 10000
+TABLE_NAME = "ps"
+COLUMN_LIST = ["ra", "dec", "sy_dist", "pl_rade", "st_rad", "st_teff", "hostname", "sy_pnum"]
 
 def linear_scale(df, col, scaler=1) -> pd.DataFrame:
     df = df.copy()
@@ -23,7 +25,7 @@ def convert_to_cart(df) -> pd.DataFrame:
 
 def convert_scale_clean_df(input_df: pd.DataFrame) -> pd.DataFrame:
     # ensure working with only required columns from df
-    df_filtered = input_df[["ra", "dec", "sy_dist", "pl_rade", "st_rad", "st_teff"]].copy()
+    df_filtered = input_df[COLUMN_LIST].copy()
 
     # delete dup planets around same star
     df_filtered.dropna(inplace=True)
@@ -48,9 +50,7 @@ def generate_from_local_csv(input_csv_filename: str, output_csv: str) -> None:
     save_to_csv(df_scaled_cart, output_csv)
 
 def generate_from_api(output_csv: str) -> None:
-    column_list = ["ra", "dec", "sy_dist", "pl_rade", "st_rad", "st_teff"]
-    table = "ps"
-    df = pull_from_astro_api(table, column_list)
+    df = pull_from_astro_api(TABLE_NAME, COLUMN_LIST)
     df_scaled_cart = convert_scale_clean_df(df)
     # output new csv for blender consumption
     save_to_csv(df_scaled_cart, output_csv)
